@@ -1,9 +1,9 @@
 *.class
 
-.mantis-selenium-tests/settings/**
-.mantis-selenium-tests/bin/**
-.mantis-selenium-tests/test-output/**
-.mantis-selenium-tests/metadata/**
+.mantis-tests/settings/**
+.mantis-tests/bin/**
+.mantis-tests/test-output/**
+.mantis-tests/metadata/**
 
 .settings/**
 bin/**
@@ -67,3 +67,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/bin/
