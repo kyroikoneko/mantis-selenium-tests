@@ -64,6 +64,10 @@ public abstract class WebDriverHelperBase extends HelperBase {
 	}
 
 	protected void openUrl(String string) {
+		driver.get(manager.getProperty("baseUrl") + string);
+	}
+
+	protected void openAbsoluteUrl(String string) {
 		driver.get(string);
 	}
 
@@ -75,12 +79,6 @@ public abstract class WebDriverHelperBase extends HelperBase {
 		if (text != null) {
 			new Select(driver.findElement(locator)).selectByVisibleText(text);
 		}
-	}
-
-	protected int clicks(By locator) {
-
-		int count = driver.findElements(locator).size();
-		return count;
 	}
 
 }

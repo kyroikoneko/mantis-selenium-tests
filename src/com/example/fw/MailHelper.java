@@ -1,4 +1,4 @@
-package org.mantis.framework;
+package com.example.fw;
 
 import java.util.Properties;
 
@@ -19,10 +19,10 @@ public class MailHelper {
 		this.mailserver = app.getProperty("mailserver.host");
 	}
 
-	public Msg getNewMail(String user, String password) {
+	public String getNewMail(String user, String password) {
 		Properties props = System.getProperties();
 		Session session = Session.getDefaultInstance(props);
-		
+
 		Store store;
 		try {
 			store = session.getStore("pop3");
@@ -33,19 +33,18 @@ public class MailHelper {
 				return null;
 			}
 			Message message = folder.getMessage(1);
-			
+
 			message.setFlag(Flags.Flag.DELETED, true);
-			Msg msg = new Msg((String) message.getContent());
+			String msg = (String) message.getContent();
 			folder.close(true);
 			store.close();
 
 			return msg;
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	
 }

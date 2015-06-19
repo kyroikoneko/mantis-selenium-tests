@@ -8,47 +8,47 @@ import com.google.common.collect.Lists;
 
 public class ListOf<T> extends ForwardingList<T> {
 
-  private List<T> list = Lists.newArrayList();
-  
-  public ListOf() {
-  }
+	private List<T> list = Lists.newArrayList();
 
-  public ListOf(ListOf<T> listToCopy) {
-    list = Lists.newArrayList(listToCopy);
-  }
+	public ListOf() {
+	}
 
-  @Override
-  protected List<T> delegate() {
-    return list;
-  }
+	public ListOf(ListOf<T> listToCopy) {
+		list = Lists.newArrayList(listToCopy);
+	}
 
-  public ListOf<T> withAppended(T item) {
-    ListOf<T> newItems = new ListOf<T>();
-    newItems.list = Lists.newArrayList(this.list);
-    newItems.list.add(item);
-    return newItems;
-  }
+	@Override
+	protected List<T> delegate() {
+		return list;
+	}
 
-  public ListOf<T> without(T item) {
-    ListOf<T> newItems = new ListOf<T>();
-    newItems.list = Lists.newArrayList(this.list);
-    newItems.list.remove(item);
-    return newItems;
-  }
+	public ListOf<T> withAppended(T item) {
+		ListOf<T> newItems = new ListOf<T>();
+		newItems.list = Lists.newArrayList(this.list);
+		newItems.list.add(item);
+		return newItems;
+	}
 
-  public ListOf<T> withPrepended(T item) {
-    ListOf<T> newItems = new ListOf<T>();
-    newItems.list = Lists.newArrayList();
-    newItems.list.add(item);
-    newItems.list.addAll(this.list);
-    return newItems;
-  }
+	public ListOf<T> without(T item) {
+		ListOf<T> newItems = new ListOf<T>();
+		newItems.list = Lists.newArrayList(this.list);
+		newItems.list.remove(item);
+		return newItems;
+	}
 
-  public T getSome() {
-    if (size() == 0) {
-      return null;
-    } else {
-      return list.get(new Random().nextInt(size()));
-    }
-  }
+	public ListOf<T> withPrepended(T item) {
+		ListOf<T> newItems = new ListOf<T>();
+		newItems.list = Lists.newArrayList();
+		newItems.list.add(item);
+		newItems.list.addAll(this.list);
+		return newItems;
+	}
+
+	public T getSome() {
+		if (size() == 0) {
+			return null;
+		} else {
+			return list.get(new Random().nextInt(size()));
+		}
+	}
 }

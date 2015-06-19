@@ -1,5 +1,4 @@
-package org.mantis.framework;
-
+package com.example.fw;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,11 +11,11 @@ public class FtpHelper {
 
 	public static Logger log = Logger.getLogger(FtpHelper.class.getName());
 
-	private AppManager app;
+	private ApplicationManager app;
 
 	private FTPClient ftp;
 
-	public FtpHelper(AppManager app) {
+	public FtpHelper(ApplicationManager app) {
 		this.app = app;
 	}
 
@@ -35,14 +34,14 @@ public class FtpHelper {
 
 		try {
 			ftp.connect(ftpserver);
-		    ftp.login(login, password);
+			ftp.login(login, password);
 			ftp.changeWorkingDirectory(appPath);
 
-	    } catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void backupFile(String file, String fileBackup) {
 		initFtpConnection();
 		try {
@@ -94,7 +93,7 @@ public class FtpHelper {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void closeFtpConnection() {
 		try {
 			ftp.disconnect();

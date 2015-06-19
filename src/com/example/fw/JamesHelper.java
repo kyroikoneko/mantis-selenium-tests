@@ -1,4 +1,4 @@
-package org.mantis.framework;
+package com.example.fw;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -22,17 +22,17 @@ public class JamesHelper {
 		int port = Integer.parseInt(app.getProperty("mailserver.port"));
 		String login = app.getProperty("mailserver.adminlogin");
 		String password = app.getProperty("mailserver.adminpassword");
-		
+
 		try {
 			telnet.connect(mailserver, port);
 			in = telnet.getInputStream();
-			out = new PrintStream( telnet.getOutputStream() );
+			out = new PrintStream(telnet.getOutputStream());
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// Don't know why it doesn't allow login at the first attempt
 		readUntil("Login id:");
 		write("");
@@ -46,9 +46,9 @@ public class JamesHelper {
 		write(password);
 
 		// Read welcome message
-		readUntil("Welcome "+login+". HELP for a list of commands");
+		readUntil("Welcome " + login + ". HELP for a list of commands");
 	}
-	
+
 	private String readUntil(String pattern) {
 		try {
 			char lastChar = pattern.charAt(pattern.length() - 1);
